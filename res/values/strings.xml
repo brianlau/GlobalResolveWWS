@@ -2,7 +2,9 @@
 <resources>
 
     <string name="app_name">GlobalResovleWWS</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="weather_info">Weather Information</string>
     <string name="menu_settings">Settings</string>
+    <string name="docked_Button">Docked Mode</string>
+    <string name="risk">Risk Information</string>
 
 </resources>
