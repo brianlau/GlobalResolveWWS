@@ -20,8 +20,8 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent dockedScreen = new Intent(getApplicationContext(), secondScreenActivity.class );
-				startActivity(dockedScreen);
+					Intent dockedScreen = new Intent(getApplicationContext(), SecondScreen.class );
+					startActivity(dockedScreen);
 			}
 		});
 	}

@@ -8,5 +8,6 @@
     <string name="risk">Risk Information</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_second_screen">SecondScreen</string>
+    <string name="back">Back</string>
 
 </resources>
