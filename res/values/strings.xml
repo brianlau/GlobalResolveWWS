@@ -6,5 +6,7 @@
     <string name="menu_settings">Settings</string>
     <string name="docked_Button">Docked Mode</string>
     <string name="risk">Risk Information</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_second_screen">SecondScreen</string>
 
 </resources>
