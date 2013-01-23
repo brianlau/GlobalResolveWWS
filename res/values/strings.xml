@@ -9,5 +9,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_second_screen">SecondScreen</string>
     <string name="back">Back</string>
+    <string name="sun_desc">This is a sun icon</string>
+    <string name="nr_desc">This is a rainy night</string>
 
 </resources>
