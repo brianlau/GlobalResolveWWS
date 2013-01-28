@@ -9,6 +9,7 @@ import android.widget.Button;
 
 public class SecondScreen extends Activity {
 
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -21,7 +22,9 @@ public class SecondScreen extends Activity {
 		@Override
 		public void onClick(View v) {
 			Intent deployedScreen = new Intent(getApplicationContext(), MainActivity.class );
+
 			startActivity(deployedScreen);
+			finish();
 		}
 	});
 }
