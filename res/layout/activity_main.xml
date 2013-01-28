@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/darker_gray"
     tools:context=".MainActivity" >
-	
+
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
@@ -12,7 +12,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="18dp"
-        android:text="@string/docked_Button"/>
+        android:text="@string/docked_Button" />
 
     <TextView
         android:id="@+id/textView2"
@@ -25,15 +25,28 @@
         android:gravity="center"
         android:text="@string/risk" />
 
-     <ImageView
-         android:id="@+id/imageView"
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:layout_above="@+id/textView2"
-         android:layout_alignParentLeft="true"
-         android:adjustViewBounds="true"
-         android:contentDescription="@string/sun_desc"
-         android:focusable="true"
-         android:gravity="center" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/button1"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/sun_desc"
+        android:focusable="true"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/temp_curr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/button1"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textColor="@android:color/white"/>
 
 </RelativeLayout>
