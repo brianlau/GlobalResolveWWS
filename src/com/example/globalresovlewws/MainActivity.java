@@ -16,47 +16,50 @@ import android.widget.TextView;
 import android.os.Handler;
 
 public class MainActivity extends Activity {
+	MediaPlayer mp = new MediaPlayer();
+	AssetFileDescriptor siren;
+	boolean flag = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
-		final Context context = MainActivity.this;
+	
 		final SimulateData sim = new SimulateData();
 		final int[] imageArray = { R.drawable.sunny_icon, R.drawable.night_rain };
-		
-		final MediaPlayer mp = new MediaPlayer();
-		final AssetFileDescriptor siren = getResources().openRawResourceFd(R.raw.siren);
-		
+
+		siren = getResources().openRawResourceFd(R.raw.siren);
+
 		final TextView textView = (TextView) findViewById(R.id.temp_curr);
 		final ImageView imageView = (ImageView) findViewById(R.id.imageView);
 		final Handler handler = new Handler();
-		Runnable runnable = new Runnable() {
+	
+		final Runnable runnable = new Runnable() {
 			int i = 0;
+
 			public void run() {
 				sim.TemperatureForecast(); // run dummyTemp
+				try {
+					mp.setDataSource(siren.getFileDescriptor(),
+							siren.getStartOffset(), siren.getLength());
+					mp.prepare();
+				} catch (IllegalArgumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalStateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				if (sim.CurrentTemperature() <= 30) { // sets to rain
-					i = 1;	
-						try {
-							mp.setDataSource(siren.getFileDescriptor(), siren.getStartOffset(), siren.getLength());
-							mp.prepare();
-						} catch (IllegalArgumentException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IllegalStateException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						
-						mp.start();
-					
+					i = 1;
+					mp.start();
+
 				} else if (sim.CurrentTemperature() > 30) { // sets to sun
 					i = 0;
-					if (mp.isPlaying()) {
+					if (mp != null && mp.isPlaying()) {
 						mp.stop();
 						mp.reset();
 					}
@@ -78,8 +81,29 @@ public class MainActivity extends Activity {
 				Intent dockedScreen = new Intent(getApplicationContext(),
 						SecondScreen.class);
 				startActivity(dockedScreen);
-			}
-		});
+				handler.removeCallbacks(runnable);
+				finish();
+			}}
+		);}
+
+	@Override 
+	public void onPause(){
+	    super.onPause();
+	    if(mp != null){
+	    	mp.release();
+	    }
+
+	}
+
+	@Override
+	public void onResume(){
+		super.onResume();
+		if(mp == null)
+			initializeMediaPlayer();
+	}
+	private void initializeMediaPlayer() {
+		mp = new MediaPlayer();
+		
 	}
 
 	@Override
