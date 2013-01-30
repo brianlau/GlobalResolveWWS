@@ -30,6 +30,11 @@ public class MainActivityTest extends
 		mImageView = (ImageView) mActivity.findViewById(com.example.globalresovlewws.R.id.imageView);
 		mTextView = (TextView) mActivity.findViewById(com.example.globalresovlewws.R.id.temp_curr);
 	}
+	public void testPresetUp(){
+		assertTrue(myButton != null);
+		assertTrue(mImageView != null);
+		assertTrue(mTextView != null);
+	}
 	
 	public void testMainActivityUI(){
 		mActivity.runOnUiThread(
