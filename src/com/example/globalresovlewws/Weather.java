@@ -15,6 +15,14 @@ public class Weather {
 
 	}
 
+	public Weather(String time, double latitude, double longitude, int maxTemp, int minTemp, int cOP){
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.time = time;
+		this.maxTemp = maxTemp;
+		this.minTemp = minTemp;
+		this.chanceOfPrecipi = cOP;
+	}
 
 
 	public double getLatitude() {
