@@ -24,10 +24,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_MIN_TEMP = "Min. Temp";
 	private static final String KEY_CHANCE_PREC = "Chance of Precipitation";
 
-	public DatabaseHandler(Context context, String name, CursorFactory factory,
-			int version) {
-		super(context, name, factory, version);
-		// TODO Auto-generated constructor stub
+	public DatabaseHandler(Context context) {
+		super(context, DATA_BASE_NAME, null, DATA_BASE_VERSION);
 	}
 
 	@Override
